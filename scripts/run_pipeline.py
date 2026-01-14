@@ -123,8 +123,8 @@ def main():
     parser.add_argument('--output', required=True, help='Output directory')
     parser.add_argument('--hotspots', required=True, 
                        help='Comma-separated hotspot residues (e.g., "10,15,20")')
-    parser.add_argument('--num_designs', type=int, default=750, 
-                       help='Number of designs (default: 750)')
+    parser.add_argument('--num_designs', type=int, default=750,
+                       help='Number of designs (fixed: 750)')
     parser.add_argument('--budget', type=int, default=375, 
                        help='Post-filtering budget (default: 375)')
     parser.add_argument('--binder_range', default=None, 
@@ -277,22 +277,22 @@ def main():
     log("Top 10 by iPTM:")
     print(df.head(10)[['design_name', 'design_to_target_iptm', 'iptm', 'ptm']].to_string(index=False))
     
-    # Score top 20
+    # Score top 200
     log("")
     log("=" * 80)
-    log("PHASE 3: BOLTZ-2 + IPSAE (TOP 20)")
+    log("PHASE 3: BOLTZ-2 + IPSAE (TOP 200)")
     log("=" * 80)
-    
-    top_20 = df.head(20)
+
+    top_200 = df.head(200)
     boltz2_dir = output_dir / 'boltz2_scoring'
     boltz2_dir.mkdir(exist_ok=True)
     
     results = []
-    
-    for idx, row in top_20.iterrows():
+
+    for idx, row in top_200.iterrows():
         design_name = row['design_name']
         log(f"")
-        log(f"[{idx+1}/20] {design_name} (iPTM={row['design_to_target_iptm']:.4f})")
+        log(f"[{idx+1}/200] {design_name} (iPTM={row['design_to_target_iptm']:.4f})")
         
         cif_file = designs_dir / f'{design_name}.cif'
         if not cif_file.exists():

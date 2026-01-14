@@ -15,7 +15,7 @@ This pipeline generates de novo protein binders against a target protein of inte
 - Automated end-to-end workflow
 - GPU-accelerated structure prediction
 - Comprehensive interface scoring (ipSAE, pDockQ, iPTM)
-- Scalable from 50 to 750+ designs
+- Generates 750 designs, refines top 200
 - Production-ready with error handling and logging
 
 ## Requirements
@@ -68,7 +68,7 @@ python3 scripts/run_pipeline.py \
 | `--target` | Yes | - | Path to target PDB/CIF file |
 | `--output` | Yes | - | Output directory path |
 | `--hotspots` | Yes | - | Comma-separated residue numbers (chain A) |
-| `--num_designs` | No | 750 | Number of binder designs to generate |
+| `--num_designs` | No | 750 | Number of binder designs to generate (fixed: 750) |
 | `--budget` | No | 375 | Post-filtering budget (typically half of num_designs) |
 | `--binder_range` | No | Auto | Binder length range (e.g., "60,130") |
 
@@ -116,7 +116,7 @@ output_folder/
 │   │   ├── design_000.cif
 │   │   ├── design_001.cif
 │   │   └── ...
-│   └── ipsae_outputs/             # Detailed scores for top 20
+│   └── ipsae_outputs/             # Detailed scores for top 200
 │       ├── design_XXX_ipsae.txt
 │       └── ...
 └── boltzgen_output/               # Intermediate files

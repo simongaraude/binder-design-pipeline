@@ -219,6 +219,6 @@ Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for gui
 ## Acknowledgments
 
 This pipeline integrates:
-- BoltzGen (https://github.com/jwohlwend/boltzgen)
+- BoltzGen (https://github.com/HannesStark/boltzgen)
 - Boltz-2 (https://github.com/jwohlwend/boltz)
 - IPSAE (https://github.com/DunbrackLab/IPSAE)
